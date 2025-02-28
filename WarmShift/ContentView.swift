@@ -18,11 +18,30 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if let processedImage = processedImage {
-                Image(uiImage: processedImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 300)
+            HStack {
+                Button(action: {
+                    processedImage = nil
+                }, label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "xmark.circle")
+                        Text("Cancel")
+                    }
+                    .foregroundColor(.black)
+                    .padding(.horizontal, 12)
+                    .frame(height: 40)
+                    .background(Color.gray.opacity(0.1))
+                    .clipShape(Capsule())
+                })
+                .buttonStyle(PlainButtonStyle())
+                
+                Spacer()
+            }
+            .padding(16)
+            
+            Spacer()
+            
+            if let processedImage {
+                ResizableImageView(image: processedImage)
             } else {
                 Text("Choose image from Photos")
             }
@@ -57,7 +76,7 @@ struct ContentView: View {
     }
     
     private func processImage(with temp: Float) {
-        guard let image = image else { return }
+        guard let image else { return }
         
         DispatchQueue.global(qos: .userInitiated).async {
             let processed = OpenCVWrapper.adjustTemperature(image, temperature: temp)
