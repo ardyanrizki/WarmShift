@@ -14,6 +14,8 @@
 		388933692D716A4000240441 /* WarmShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933682D716A4000240441 /* WarmShiftTests.swift */; };
 		388933732D716A4000240441 /* WarmShiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933722D716A4000240441 /* WarmShiftUITests.swift */; };
 		388933752D716A4000240441 /* WarmShiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933742D716A4000240441 /* WarmShiftUITestsLaunchTests.swift */; };
+		3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3889339A2D71A05000240441 /* opencv2.xcframework */; };
+		3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3889339E2D71A08100240441 /* OpenCVWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,11 @@
 		3889336E2D716A4000240441 /* WarmShiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WarmShiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		388933722D716A4000240441 /* WarmShiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftUITests.swift; sourceTree = "<group>"; };
 		388933742D716A4000240441 /* WarmShiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3889339A2D71A05000240441 /* opencv2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = opencv2.xcframework; path = "../../../Downloads/fastopencv-ios-main/opencv2.xcframework"; sourceTree = "<group>"; };
+		3889339C2D71A06900240441 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WarmShift-Bridging-Header.h"; sourceTree = "<group>"; };
+		3889339E2D71A08100240441 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		388933A02D71A0BA00240441 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +102,15 @@
 		388933562D716A3D00240441 /* WarmShift */ = {
 			isa = PBXGroup;
 			children = (
+				3889339A2D71A05000240441 /* opencv2.xcframework */,
 				388933572D716A3D00240441 /* WarmShiftApp.swift */,
 				388933592D716A3D00240441 /* ContentView.swift */,
 				3889335B2D716A3F00240441 /* Assets.xcassets */,
 				3889335D2D716A3F00240441 /* Preview Content */,
+				3889339C2D71A06900240441 /* OpenCVWrapper.h */,
+				3889339E2D71A08100240441 /* OpenCVWrapper.mm */,
+				3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */,
+				388933A02D71A0BA00240441 /* PrefixHeader.pch */,
 			);
 			path = WarmShift;
 			sourceTree = "<group>";
@@ -195,6 +208,7 @@
 				TargetAttributes = {
 					388933532D716A3D00240441 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					388933632D716A4000240441 = {
 						CreatedOnToolsVersion = 15.4;
@@ -259,6 +273,7 @@
 			files = (
 				3889335A2D716A3D00240441 /* ContentView.swift in Sources */,
 				388933582D716A3D00240441 /* WarmShiftApp.swift in Sources */,
+				3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +434,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WarmShift/Preview Content\"";
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				ENABLE_PREVIEWS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WarmShift/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -438,6 +456,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ardyan.info.WarmShift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WarmShift/WarmShift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,11 +468,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WarmShift/Preview Content\"";
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				ENABLE_PREVIEWS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WarmShift/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -467,6 +490,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ardyan.info.WarmShift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WarmShift/WarmShift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
