@@ -16,6 +16,7 @@
 		388933752D716A4000240441 /* WarmShiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933742D716A4000240441 /* WarmShiftUITestsLaunchTests.swift */; };
 		3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3889339A2D71A05000240441 /* opencv2.xcframework */; };
 		3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3889339E2D71A08100240441 /* OpenCVWrapper.mm */; };
+		388933A22D71ADAC00240441 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933A12D71ADAC00240441 /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WarmShift-Bridging-Header.h"; sourceTree = "<group>"; };
 		3889339E2D71A08100240441 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
 		388933A02D71A0BA00240441 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		388933A12D71ADAC00240441 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				3889339A2D71A05000240441 /* opencv2.xcframework */,
 				388933572D716A3D00240441 /* WarmShiftApp.swift */,
 				388933592D716A3D00240441 /* ContentView.swift */,
+				388933A12D71ADAC00240441 /* ImagePickerView.swift */,
 				3889335B2D716A3F00240441 /* Assets.xcassets */,
 				3889335D2D716A3F00240441 /* Preview Content */,
 				3889339C2D71A06900240441 /* OpenCVWrapper.h */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388933A22D71ADAC00240441 /* ImagePickerView.swift in Sources */,
 				3889335A2D716A3D00240441 /* ContentView.swift in Sources */,
 				388933582D716A3D00240441 /* WarmShiftApp.swift in Sources */,
 				3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */,

@@ -1,7 +1,7 @@
 // © 2025 Ardyan - Pattern Matters. All rights reserved.
 
 import SwiftUI
-import UIKit
+//import UIKit
 import Combine
 import CoreHaptics
 
@@ -10,24 +10,12 @@ struct ContentView: View {
     @State private var processedImage: UIImage? = nil
     @State private var showImagePicker = false
     @State private var temperature: Float = 0.0
-    
-    @State private var engine: CHHapticEngine?
 
-    func prepareHaptics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
-        }
-    }
     let range: ClosedRange<Float> = -1.0...1.0
     
     private var temperatureSubject = PassthroughSubject<Float, Never>()
     @State private var cancellable: AnyCancellable?
-
+    
     var body: some View {
         VStack {
             if let processedImage = processedImage {
@@ -56,7 +44,7 @@ struct ContentView: View {
             setupDebounce()
         }
         .sheet(isPresented: $showImagePicker) {
-            ImagePicker(image: $image, processedImage: $processedImage)
+            ImagePickerView(image: $image, processedImage: $processedImage)
         }
     }
     
@@ -80,42 +68,6 @@ struct ContentView: View {
         }
     }
 }
-
-
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var image: UIImage?
-    @Binding var processedImage: UIImage?
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary
-        picker.delegate = context.coordinator
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-    
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ImagePicker
-        
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let uiImage = info[.originalImage] as? UIImage {
-                parent.image = uiImage
-                parent.processedImage = OpenCVWrapper.adjustTemperature(uiImage, temperature: 0.0)
-            }
-            picker.dismiss(animated: true)
-        }
-    }
-}
-
 
 #Preview {
     ContentView()
