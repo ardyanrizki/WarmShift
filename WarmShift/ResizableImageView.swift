@@ -8,14 +8,17 @@ struct ResizableImageView: View {
     var body: some View {
         GeometryReader { geometry in
             let imageSize = image.size
-            let availableHeight = geometry.size.height // Tinggi yang tersedia
+            let availableHeight = geometry.size.height
+            let availableWidth = geometry.size.width
             let imageAspectRatio = imageSize.width / imageSize.height
+            
             let calculatedWidth = availableHeight * imageAspectRatio
             
             Image(uiImage: image)
                 .resizable()
-                .scaledToFit() // Menyesuaikan lebar berdasarkan tinggi
-                .frame(width: calculatedWidth, height: availableHeight)
+                .scaledToFit()
+                .frame(width: min(availableWidth, calculatedWidth), alignment: .center)
+                .frame(maxWidth: .infinity, maxHeight: availableHeight)
                 .clipped()
         }
     }
