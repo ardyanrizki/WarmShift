@@ -22,15 +22,12 @@ struct ContentView: View {
                 Button(action: {
                     processedImage = nil
                 }, label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "xmark.circle")
-                        Text("Cancel")
-                    }
-                    .foregroundColor(.black)
-                    .padding(.horizontal, 12)
-                    .frame(height: 40)
-                    .background(Color.gray.opacity(0.1))
-                    .clipShape(Capsule())
+                    Label("Cancel", systemImage: "xmark.circle")
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 12)
+                        .frame(height: 40)
+                        .background(Color.gray.opacity(0.1))
+                        .clipShape(Capsule())
                 })
                 .buttonStyle(PlainButtonStyle())
                 
@@ -43,27 +40,45 @@ struct ContentView: View {
             if let processedImage {
                 ResizableImageView(image: processedImage)
             } else {
-                Text("Choose image from Photos")
-            }
-            
-            Text("\(Int(temperature * 100))%")
-            
-            CompactSlider(value: $temperature, in: range, step: 0.04)
-                .compactSliderBackground(backgroundView: { configuration, padding in
-                    Color.clear
-                })
-                .compactSliderStyle(default: .scrollable())
-                .compactSliderOptionsByAdding(.withoutBackground, .enabledHapticFeedback, .snapToSteps)
-                .frame(height: 28)
-                .onChange(of: temperature) { _, newValue in
-                    temperatureSubject.send(newValue)
+                VStack {
+                    Text("Choose image from Photos")
+                    
+                    Button("Choose") {
+                        showImagePicker = true
+                    }
+                    .padding()
                 }
-            
-            
-            Button("Choose") {
-                showImagePicker = true
             }
-            .padding()
+            
+            Spacer()
+            
+            VStack(spacing: 16) {
+                CircularProgressView(progress: temperature)
+                    .frame(width: 48, height: 48)
+                
+                CompactSlider(value: $temperature, in: range, step: 0.04)
+                    .compactSliderBackground(backgroundView: { configuration, padding in
+                        Color.clear
+                    })
+                    .compactSliderStyle(default: .scrollable())
+                    .compactSliderOptionsByAdding(.withoutBackground, .enabledHapticFeedback, .snapToSteps)
+                    .frame(height: 28)
+                    .onChange(of: temperature) { _, newValue in
+                        temperatureSubject.send(newValue)
+                    }
+                
+                Label("Warmth", systemImage: "thermometer.medium")
+                    .labelStyle(.titleAndIcon)
+                    .foregroundStyle(.black)
+                    .padding(.horizontal, 12)
+                    .frame(height: 40)
+                    .background(Color.gray.opacity(0.1))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                
+            }
+            .padding(.top, 8)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 32)
         }
         .onAppear {
             setupDebounce()

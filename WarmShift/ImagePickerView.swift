@@ -20,8 +20,8 @@ struct ImagePickerView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
-        config.filter = .images // Hanya izinkan gambar
-        config.selectionLimit = 1 // Pilih satu gambar saja
+        config.filter = .images
+        config.selectionLimit = 1
         
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
