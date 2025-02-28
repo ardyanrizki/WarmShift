@@ -1,9 +1,9 @@
 // © 2025 Ardyan - Pattern Matters. All rights reserved.
 
 import SwiftUI
-//import UIKit
 import Combine
 import CoreHaptics
+import CompactSlider
 
 struct ContentView: View {
     @State private var image: UIImage? = nil
@@ -48,7 +48,13 @@ struct ContentView: View {
             
             Text("\(Int(temperature * 100))%")
             
-            Slider(value: $temperature, in: range, step: 0.04)
+            CompactSlider(value: $temperature, in: range, step: 0.04)
+                .compactSliderBackground(backgroundView: { configuration, padding in
+                    Color.clear
+                })
+                .compactSliderStyle(default: .scrollable())
+                .compactSliderOptionsByAdding(.withoutBackground, .enabledHapticFeedback, .snapToSteps)
+                .frame(height: 28)
                 .onChange(of: temperature) { _, newValue in
                     temperatureSubject.send(newValue)
                 }

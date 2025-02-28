@@ -18,6 +18,7 @@
 		3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3889339E2D71A08100240441 /* OpenCVWrapper.mm */; };
 		388933A22D71ADAC00240441 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933A12D71ADAC00240441 /* ImagePickerView.swift */; };
 		388933A62D71B75000240441 /* ResizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933A52D71B75000240441 /* ResizableImageView.swift */; };
+		388933A92D71B81800240441 /* CompactSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 388933A82D71B81800240441 /* CompactSlider */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */,
+				388933A92D71B81800240441 /* CompactSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +164,9 @@
 			dependencies = (
 			);
 			name = WarmShift;
+			packageProductDependencies = (
+				388933A82D71B81800240441 /* CompactSlider */,
+			);
 			productName = WarmShift;
 			productReference = 388933542D716A3D00240441 /* WarmShift.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +240,9 @@
 				Base,
 			);
 			mainGroup = 3889334B2D716A3D00240441;
+			packageReferences = (
+				388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */,
+			);
 			productRefGroup = 388933552D716A3D00240441 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -620,6 +628,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/buh/CompactSlider.git";
+			requirement = {
+				branch = xcode15;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		388933A82D71B81800240441 /* CompactSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */;
+			productName = CompactSlider;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3889334C2D716A3D00240441 /* Project object */;
 }
