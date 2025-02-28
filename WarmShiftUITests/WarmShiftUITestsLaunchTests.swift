@@ -1,9 +1,4 @@
-//
-//  WarmShiftUITestsLaunchTests.swift
-//  WarmShiftUITests
-//
-//  Created by Muhammad Rizki Ardyan on 28/02/25.
-//
+// © 2025 Ardyan - Pattern Matters. All rights reserved.
 
 import XCTest
 
