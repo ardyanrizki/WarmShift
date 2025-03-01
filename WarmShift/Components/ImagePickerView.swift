@@ -5,12 +5,12 @@ import PhotosUI
 
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var image: UIImage?
-    @Binding var processedImage: UIImage?
+    @Binding var isLoading: Bool
     let allowedExtensions: [String]
     
-    init(image: Binding<UIImage?>, processedImage: Binding<UIImage?>, allowedExtensions: [String] = ["jpg", "jpeg"]) {
+    init(image: Binding<UIImage?>, isLoading: Binding<Bool>, allowedExtensions: [String] = ["jpg", "jpeg"]) {
         self._image = image
-        self._processedImage = processedImage
+        self._isLoading = isLoading
         self.allowedExtensions = allowedExtensions
     }
     
@@ -41,6 +41,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
             picker.dismiss(animated: true)
             
             guard let result = results.first else { return }
+            parent.isLoading = true
 
             result.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
                 guard let url = url, error == nil else { return }
@@ -52,12 +53,12 @@ struct ImagePickerView: UIViewControllerRepresentable {
                        let uiImage = UIImage(data: imageData) {
                         DispatchQueue.main.async {
                             self.parent.image = uiImage
-                            self.parent.processedImage = OpenCVWrapper.adjustTemperature(uiImage, temperature: 0.0)
                         }
                     }
                 } else {
                     self.showFormatError()
                 }
+                self.parent.isLoading = false
             }
         }
 
