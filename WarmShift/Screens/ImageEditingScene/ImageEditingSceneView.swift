@@ -25,13 +25,28 @@ struct ImageEditingSceneView: View {
         self._isLoading = isLoading
     }
     
+    enum ImageEditingText {
+        static let cancel = "Cancel"
+        static let save = "Save"
+        static let share = "Share"
+        static let savedSuccess = "Saved!"
+        static let savedFailure = "Failed to Save"
+        static let ok = "OK"
+    }
+    
+    enum ImageEditingIcon {
+        static let cancel = "xmark"
+        static let save = "square.and.arrow.down"
+        static let share = "square.and.arrow.up"
+    }
+    
     var body: some View {
         VStack {
             HStack {
-                MenuButton(title: "Cancel", icon: "xmark", action: cancel, isDisabled: false)
+                MenuButton(title: ImageEditingText.cancel, icon: ImageEditingIcon.cancel, action: cancel, isDisabled: false)
                 Spacer()
-                MenuButton(title: "Save", icon: "square.and.arrow.down", action: saveImageToPhotos, isDisabled: isFurtherActionDisabled)
-                MenuButton(title: "Share", icon: "square.and.arrow.up", action: {
+                MenuButton(title: ImageEditingText.save, icon: ImageEditingIcon.save, action: saveImageToPhotos, isDisabled: isFurtherActionDisabled)
+                MenuButton(title: ImageEditingText.share, icon: ImageEditingIcon.share, action: {
                     showShareSheet = true
                 }, isDisabled: isFurtherActionDisabled)
             }
@@ -63,11 +78,11 @@ struct ImageEditingSceneView: View {
                 ShareSheetView(activityItems: [imageToShare])
             }
         }
-        .alert("Saved!", isPresented: $saveSuccess) {
-            Button("OK", role: .cancel) {}
+        .alert(ImageEditingText.savedSuccess, isPresented: $saveSuccess) {
+            Button(ImageEditingText.ok, role: .cancel) {}
         }
-        .alert("Failed to Save", isPresented: $showError) {
-            Button("OK", role: .cancel) {}
+        .alert(ImageEditingText.savedFailure, isPresented: $showError) {
+            Button(ImageEditingText.ok, role: .cancel) {}
         }
     }
     
@@ -103,3 +118,4 @@ struct ImageEditingSceneView: View {
         saveSuccess = true
     }
 }
+

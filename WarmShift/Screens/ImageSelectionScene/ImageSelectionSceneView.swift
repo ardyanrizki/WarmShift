@@ -10,16 +10,30 @@ struct ImageSelectionSceneView: View {
     @State private var showImagePicker = false
     
     private let pullTreshold: CGFloat = 80
+
+    enum ImageSelectionText {
+        static let textDefault = "Select image first"
+        static let textPulling = "Almost there!"
+        static let subtext = "Simply pull to add an image from your library"
+    }
     
-    func pullRefreshProgress() -> Float {
+    enum ImageSelectionIcon {
+        static let iconDefault = "photo.badge.plus.fill"
+        static let iconPulling = "arrow.down"
+    }
+    
+    
+    private let scrollViewNamespace = "ScrollView"
+    
+    private func pullRefreshProgress() -> Float {
         return Float(abs(max(yOffset, 0) / -pullTreshold))
     }
     
-    func isPulling() -> Bool {
+    private func isPulling() -> Bool {
         pullRefreshProgress() > 0
     }
     
-    func isPullTresholdReached() -> Bool {
+    private func isPullTresholdReached() -> Bool {
         yOffset >= pullTreshold
     }
     
@@ -39,10 +53,10 @@ struct ImageSelectionSceneView: View {
             ScrollView(showsIndicators: false) {
                     VStack(spacing: 24) {
                         Button {
-                            showImagePicker = true
+                            
                         } label: {
                             VStack(spacing: 24) {
-                                Image(systemName: isPulling() ? "arrow.down" : "photo.badge.plus.fill")
+                                Image(systemName: isPulling() ? ImageSelectionIcon.iconPulling : ImageSelectionIcon.iconDefault)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: 80)
@@ -51,11 +65,11 @@ struct ImageSelectionSceneView: View {
                                     .contentTransition(.symbolEffect(.replace))
                                 
                                 VStack(spacing: 8) {
-                                    Text(isPulling() ? "Almost there!" : "Select image first")
+                                    Text(isPulling() ? ImageSelectionText.textPulling : ImageSelectionText.textDefault)
                                         .font(.system(size: 18, weight: .semibold, design: .rounded))
                                         .contentTransition(.identity)
                                     
-                                    Text("Pull to add an image from your library")
+                                    Text(ImageSelectionText.subtext)
                                         .font(.system(size: 16, weight: .medium, design: .rounded))
                                         .foregroundStyle(.secondary)
                                         .multilineTextAlignment(.center)
@@ -63,7 +77,7 @@ struct ImageSelectionSceneView: View {
                                 }
                             }
                         }
-                        .buttonStyle(SpringButtonStyle())
+                        .buttonStyle(SpringButtonStyle(action: { showImagePicker = true }))
 
                     }
                     .frame(width: UIScreen.main.bounds.width, height: maxHeight())
@@ -73,7 +87,7 @@ struct ImageSelectionSceneView: View {
                     })
             }
             .ignoresSafeArea()
-            .coordinateSpace(name: "ScrollView")
+            .coordinateSpace(name: scrollViewNamespace)
         }
         .fullScreenCover(isPresented: $showImagePicker) {
             ImagePickerView(image: $image, isLoading: $isLoading)
@@ -84,7 +98,7 @@ struct ImageSelectionSceneView: View {
     }
     
     private func detectScrollOffset(geometry: GeometryProxy) -> some View {
-        let yOffset = geometry.frame(in: .named("ScrollView")).minY
+        let yOffset = geometry.frame(in: .named(scrollViewNamespace)).minY
         
         DispatchQueue.main.async {
             self.yOffset = yOffset
