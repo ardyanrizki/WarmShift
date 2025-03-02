@@ -13,8 +13,8 @@ struct MenuButton: View {
             action()
         } label: {
             Label(title, systemImage: icon)
-                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                .labelStyle(.titleOnly)
+                .font(.system(size: 22, weight: .semibold, design: .rounded))
+                .labelStyle(.iconOnly)
                 .foregroundColor(.secondary.opacity(isDisabled ? 0.3 : 1))
                 .padding(.horizontal, 12)
                 .frame(minWidth: 40)

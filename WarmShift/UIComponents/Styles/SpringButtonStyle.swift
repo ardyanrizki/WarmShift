@@ -19,13 +19,16 @@ struct SpringButtonStyle: ButtonStyle {
             )
             .highPriorityGesture(TapGesture())
             .onChange(of: configuration.isPressed) { wasPressed, isPressed in
-                Task {
-                    if wasPressed && !isPressed && !isInvalidateAction {
+                if wasPressed && !isPressed && !isInvalidateAction {
+                    Task {
                         try? await Task.sleep(for: .milliseconds(200))
-                        action()
-                    } else {
-                        isInvalidateAction = false
+                        
+                        await MainActor.run {
+                            action()
+                        }
                     }
+                } else {
+                    isInvalidateAction = false
                 }
             }
             .sensoryFeedback(.impact(flexibility: .solid), trigger: configuration.isPressed) { oldVal, newVal in

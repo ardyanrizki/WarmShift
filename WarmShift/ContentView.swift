@@ -2,42 +2,34 @@
 
 import SwiftUI
 import Combine
-import CoreHaptics
-import CompactSlider
+import NavigationTransitions
 
 struct ContentView: View {
-    @State private var image: UIImage? = nil
-    @State private var isLoading = false
+    @StateObject var navigationManager: NavigationManager<AppRoute>
     
-    @State private var activeScene: Scene = .imageSelection
-    
-    var body: some View {
-        VStack {
-            if isLoading {
-                ProgressView()
-                
-            } else {
-                switch activeScene {
-                case .imageSelection:
-                    ImageSelectionSceneView(image: $image, isLoading: $isLoading)
-                    
-                case .imageEditing:
-                    ImageEditingSceneView(image: $image, isLoading: $isLoading)
-                }
-                
-            }
-        }
-        .onChange(of: image) { _, newValue in
-            activeScene = newValue == nil ? .imageSelection : .imageEditing
-        }
+    init() {
+        self._navigationManager = StateObject(wrappedValue: NavigationManager<AppRoute>())
     }
     
-    enum Scene {
-        case imageSelection
-        case imageEditing
+    var body: some View {
+        NavigationStack(path: $navigationManager.path) {
+            ImageSelectionSceneView()
+                .navigationDestination(for: AppRoute.self) { route in
+                    switch route {
+                    case .imageEditing(let image):
+                        ImageEditingSceneView(image: image)
+                    }
+                }
+        }
+        .environmentObject(navigationManager)
+        .navigationTransition(.slide(axis: .vertical))
     }
 }
 
 #Preview {
     ContentView()
+}
+
+enum AppRoute: Hashable {
+    case imageEditing(UIImage)
 }

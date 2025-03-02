@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3835E9FC2D744899003CEC30 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 3835E9FB2D744899003CEC30 /* NavigationTransitions */; };
+		3835E9FE2D7454D0003CEC30 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */; };
 		388933582D716A3D00240441 /* WarmShiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933572D716A3D00240441 /* WarmShiftApp.swift */; };
 		3889335A2D716A3D00240441 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933592D716A3D00240441 /* ContentView.swift */; };
 		3889335C2D716A3F00240441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3889335B2D716A3F00240441 /* Assets.xcassets */; };
@@ -49,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		388933542D716A3D00240441 /* WarmShift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarmShift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388933572D716A3D00240441 /* WarmShiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftApp.swift; sourceTree = "<group>"; };
 		388933592D716A3D00240441 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */,
+				3835E9FC2D744899003CEC30 /* NavigationTransitions in Frameworks */,
 				388933A92D71B81800240441 /* CompactSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				388933B82D730E0400240441 /* Screens */,
-				388933B12D730D9000240441 /* Components */,
+				388933B12D730D9000240441 /* UIComponents */,
 				388933AC2D71C83B00240441 /* Info.plist */,
 				3889339A2D71A05000240441 /* opencv2.xcframework */,
 				388933572D716A3D00240441 /* WarmShiftApp.swift */,
@@ -141,6 +145,7 @@
 				3889339E2D71A08100240441 /* OpenCVWrapper.mm */,
 				3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */,
 				388933A02D71A0BA00240441 /* PrefixHeader.pch */,
+				3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */,
 			);
 			path = WarmShift;
 			sourceTree = "<group>";
@@ -170,7 +175,7 @@
 			path = WarmShiftUITests;
 			sourceTree = "<group>";
 		};
-		388933B12D730D9000240441 /* Components */ = {
+		388933B12D730D9000240441 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
 				388933B22D730DA100240441 /* Styles */,
@@ -179,7 +184,7 @@
 				388933AD2D72E24700240441 /* ShareSheetView.swift */,
 				388933C62D730F6900240441 /* MenuButton.swift */,
 			);
-			path = Components;
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 		388933B22D730DA100240441 /* Styles */ = {
@@ -254,6 +259,7 @@
 			name = WarmShift;
 			packageProductDependencies = (
 				388933A82D71B81800240441 /* CompactSlider */,
+				3835E9FB2D744899003CEC30 /* NavigationTransitions */,
 			);
 			productName = WarmShift;
 			productReference = 388933542D716A3D00240441 /* WarmShift.app */;
@@ -330,6 +336,7 @@
 			mainGroup = 3889334B2D716A3D00240441;
 			packageReferences = (
 				388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */,
+				3835E9FA2D744899003CEC30 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */,
 			);
 			productRefGroup = 388933552D716A3D00240441 /* Products */;
 			projectDirPath = "";
@@ -386,6 +393,7 @@
 				388933C22D730EEE00240441 /* PullToAddView.swift in Sources */,
 				388933B72D730DD700240441 /* HapticButtonStyle.swift in Sources */,
 				3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */,
+				3835E9FE2D7454D0003CEC30 /* NavigationManager.swift in Sources */,
 				388933AE2D72E24700240441 /* ShareSheetView.swift in Sources */,
 				388933B02D72E28F00240441 /* PullProgressView.swift in Sources */,
 			);
@@ -732,6 +740,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3835E9FA2D744899003CEC30 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/swiftui-navigation-transitions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
+			};
+		};
 		388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/buh/CompactSlider.git";
@@ -743,6 +759,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3835E9FB2D744899003CEC30 /* NavigationTransitions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3835E9FA2D744899003CEC30 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */;
+			productName = NavigationTransitions;
+		};
 		388933A82D71B81800240441 /* CompactSlider */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */;

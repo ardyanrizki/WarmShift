@@ -3,14 +3,15 @@
 import SwiftUI
 
 struct ImageSelectionSceneView: View {
-    @Binding private var image: UIImage?
-    @Binding private var isLoading: Bool
+    @State private var image: UIImage?
     
     @State private var yOffset: CGFloat = 0
     @State private var showImagePicker = false
     
+    @EnvironmentObject private var navigationManager: NavigationManager<AppRoute>
+    
     private let pullTreshold: CGFloat = 80
-
+    
     enum ImageSelectionText {
         static let textDefault = "Select image first"
         static let textPulling = "Almost there!"
@@ -41,16 +42,12 @@ struct ImageSelectionSceneView: View {
         UIScreen.main.bounds.height
     }
     
-    init(image: Binding<UIImage?>, isLoading: Binding<Bool>) {
-        self._image = image
-        self._isLoading = isLoading
-    }
-    
     var body: some View {
-        ZStack {
-            PullToAddView(progress: pullRefreshProgress(), offset: yOffset, treshold: pullTreshold)
-            
-            ScrollView(showsIndicators: false) {
+        VStack {
+            ZStack {
+                PullToAddView(progress: pullRefreshProgress(), offset: yOffset, treshold: pullTreshold)
+                
+                ScrollView(showsIndicators: false) {
                     VStack(spacing: 24) {
                         Button {
                             
@@ -78,37 +75,45 @@ struct ImageSelectionSceneView: View {
                             }
                         }
                         .buttonStyle(SpringButtonStyle(action: { showImagePicker = true }))
-
                     }
                     .frame(width: UIScreen.main.bounds.width, height: maxHeight())
                     .padding(.horizontal, 16)
                     .background( GeometryReader { proxy in
                         self.detectScrollOffset(geometry: proxy)
                     })
+                }
+                .ignoresSafeArea()
+                .coordinateSpace(name: scrollViewNamespace)
             }
-            .ignoresSafeArea()
-            .coordinateSpace(name: scrollViewNamespace)
         }
         .fullScreenCover(isPresented: $showImagePicker) {
-            ImagePickerView(image: $image, isLoading: $isLoading)
+            ImagePickerView(image: $image)
         }
+        .onChange(of: image, { _, image in
+            if let image {
+                navigationManager.navigate(to: .imageEditing(image))
+            }
+        })
         .sensoryFeedback(.impact(flexibility: .solid), trigger: isPullTresholdReached()) { _, newVal in
             newVal
         }
     }
     
     private func detectScrollOffset(geometry: GeometryProxy) -> some View {
-        let yOffset = geometry.frame(in: .named(scrollViewNamespace)).minY
+        let newYOffset = geometry.frame(in: .named(scrollViewNamespace)).minY
         
-        DispatchQueue.main.async {
-            self.yOffset = yOffset
-            if isPullTresholdReached() {
-                Task {
+        if yOffset != newYOffset {
+            Task { @MainActor in
+                self.yOffset = newYOffset
+                
+                if isPullTresholdReached() {
+                    // Create a small delay if needed
                     try? await Task.sleep(nanoseconds: 200_000_000)
                     showImagePicker = true
                 }
             }
         }
+        
         return Rectangle().fill(Color.clear)
     }
 }

@@ -4,9 +4,7 @@ import SwiftUI
 import Combine
 
 struct ImageEditingSceneView: View {
-    @Binding private var image: UIImage?
-    @Binding private var isLoading: Bool
-    
+    @State private var image: UIImage
     @State private var processedImage: UIImage? = nil
     @State private var showShareSheet = false
     @State private var saveSuccess = false
@@ -19,10 +17,10 @@ struct ImageEditingSceneView: View {
     private var temperatureSubject = PassthroughSubject<Float, Never>()
     @State private var cancellable: AnyCancellable?
     
-    init(image: Binding<UIImage?>, isLoading: Binding<Bool>) {
-        self._image = image
-        self._processedImage = .init(initialValue: image.wrappedValue)
-        self._isLoading = isLoading
+    @EnvironmentObject private var navigationManager: NavigationManager<AppRoute>
+    
+    init(image: UIImage) {
+        self.image = image
     }
     
     enum ImageEditingText {
@@ -36,7 +34,7 @@ struct ImageEditingSceneView: View {
     
     enum ImageEditingIcon {
         static let cancel = "xmark"
-        static let save = "square.and.arrow.down"
+        static let save = "plus.square.on.square"
         static let share = "square.and.arrow.up"
     }
     
@@ -63,10 +61,11 @@ struct ImageEditingSceneView: View {
             
             TemperatureControlView(temperature: $temperature, range: -1.0...1.0, temperatureSubject: temperatureSubject)
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
-            isLoading = false
-            setupDebounce()
             temperature = 0.0
+            processImage(with: temperature)
+            setupDebounce()
         }
         .onChange(of: temperature, { _, newValue in
             withAnimation(.bouncy) {
@@ -87,8 +86,8 @@ struct ImageEditingSceneView: View {
     }
     
     private func cancel() {
-        image = nil
         processedImage = nil
+        navigationManager.pop()
     }
     
     private func setupDebounce() {
@@ -100,8 +99,6 @@ struct ImageEditingSceneView: View {
     }
     
     private func processImage(with temp: Float) {
-        guard let image else { return }
-        
         DispatchQueue.global(qos: .userInitiated).async {
             let processed = OpenCVWrapper.adjustTemperature(image, temperature: temp)
             

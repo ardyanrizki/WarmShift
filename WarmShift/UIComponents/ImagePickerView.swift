@@ -5,12 +5,10 @@ import PhotosUI
 
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var image: UIImage?
-    @Binding var isLoading: Bool
     let allowedExtensions: [String]
     
-    init(image: Binding<UIImage?>, isLoading: Binding<Bool>, allowedExtensions: [String] = ["jpg", "jpeg"]) {
+    init(image: Binding<UIImage?>, allowedExtensions: [String] = ["jpg", "jpeg"]) {
         self._image = image
-        self._isLoading = isLoading
         self.allowedExtensions = allowedExtensions
     }
     
@@ -40,11 +38,14 @@ struct ImagePickerView: UIViewControllerRepresentable {
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
             
-            guard let result = results.first else { return }
-            parent.isLoading = true
+            guard let result = results.first else {
+                return
+            }
 
             result.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
-                guard let url = url, error == nil else { return }
+                guard let url = url, error == nil else {
+                    return
+                }
 
                 let fileExtension = url.pathExtension.lowercased()
 
@@ -56,12 +57,13 @@ struct ImagePickerView: UIViewControllerRepresentable {
                         }
                     }
                 } else {
-                    self.showFormatError()
+                    DispatchQueue.main.async {
+                        self.showFormatError()
+                    }
                 }
-                self.parent.isLoading = false
             }
         }
-
+        
         private func showFormatError() {
             DispatchQueue.main.async {
                 if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
