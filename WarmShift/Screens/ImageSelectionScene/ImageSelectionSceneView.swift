@@ -109,6 +109,7 @@ struct ImageSelectionSceneView: View {
         }
         .overlay {
             Color.primary.opacity(showAbout ? 0.15 : 0)
+                .allowsHitTesting(false)
                 .ignoresSafeArea()
                 .animation(.easeIn(duration: 0.1), value: showAbout)
         }
