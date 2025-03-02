@@ -3,12 +3,15 @@
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdavdroman%2Fswiftui-navigation-transitions%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/davdroman/swiftui-navigation-transitions)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdavdroman%2Fswiftui-navigation-transitions%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/davdroman/swiftui-navigation-transitions)
 
+![Image](https://github.com/user-attachments/assets/7952b95e-3978-4346-91c8-816e32b9263f)
+
 WarmShift is an iOS app that allows users to adjust the color temperature of JPEG images. Built with SwiftUI and powered by OpenCV, it provides a smooth and intuitive image processing experience.
 
 ## Features
 - Adjust image color temperature (warmer or cooler)
 - Real-time preview with smooth slider control
 - Minimalist and user-friendly UI
+- Supports dark and light mode
 
 ## Requirements
 - iOS 17.5 or later
