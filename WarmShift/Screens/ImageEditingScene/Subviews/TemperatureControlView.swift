@@ -19,7 +19,8 @@ extension ImageEditingSceneView {
                     .compactSliderBackground(backgroundView: { _, _ in Color.clear })
                     .compactSliderStyle(default: .scrollable())
                     .compactSliderOptionsByAdding(.withoutBackground, .enabledHapticFeedback, .snapToSteps)
-                    .frame(height: 28)
+                    .frame(height: 44)
+                    .padding(.bottom, 8)
                     .onChange(of: temperature) { _, newValue in
                         temperatureSubject.send(newValue)
                     }

@@ -61,7 +61,13 @@ struct AboutModalView: View {
                                     .foregroundColor(.primary)
                                 
                                 Text("""
-                                WarmShift is a simple yet powerful iOS app that lets you fine-tune the color temperature of your photos with ease. Using OpenCV for high-performance image processing and SwiftUI for an intuitive interface, WarmShift enables smooth real-time adjustments to make your images warmer or cooler.
+                                WarmShift is a simple yet powerful iOS app that lets you fine-tune the color temperature of your photos with ease.
+                                """)
+                                .fontDesign(.rounded)
+                                .foregroundColor(.secondary)
+                                
+                                Text("""
+                                Using OpenCV for high-performance image processing and SwiftUI for an intuitive interface, WarmShift enables smooth real-time adjustments to make your images warmer or cooler.
                                 """)
                                 .fontDesign(.rounded)
                                 .foregroundColor(.secondary)
