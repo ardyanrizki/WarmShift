@@ -5,10 +5,12 @@ import PhotosUI
 
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var image: UIImage?
+    @Binding var isLoading: Bool
     let allowedExtensions: [String]
     
-    init(image: Binding<UIImage?>, allowedExtensions: [String] = ["jpg", "jpeg"]) {
+    init(image: Binding<UIImage?>, isLoading: Binding<Bool>, allowedExtensions: [String] = ["jpg", "jpeg"]) {
         self._image = image
+        self._isLoading = isLoading
         self.allowedExtensions = allowedExtensions
     }
     
@@ -41,6 +43,8 @@ struct ImagePickerView: UIViewControllerRepresentable {
             guard let result = results.first else {
                 return
             }
+            
+            parent.isLoading = true
 
             result.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
                 guard let url = url, error == nil else {
@@ -54,10 +58,12 @@ struct ImagePickerView: UIViewControllerRepresentable {
                        let uiImage = UIImage(data: imageData) {
                         DispatchQueue.main.async {
                             self.parent.image = uiImage
+                            self.parent.isLoading = false
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
+                        self.parent.isLoading = false
                         self.showFormatError()
                     }
                 }

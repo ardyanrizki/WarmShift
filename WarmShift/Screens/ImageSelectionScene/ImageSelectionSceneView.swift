@@ -9,6 +9,7 @@ struct ImageSelectionSceneView: View {
     @State private var showImagePicker = false
     
     @State private var showAbout = false
+    @State private var isLoading = false
     
     @EnvironmentObject private var navigationManager: NavigationManager<AppRoute>
     
@@ -42,62 +43,67 @@ struct ImageSelectionSceneView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
+            if isLoading {
+                ProgressView()
                 
-                MenuButton(title: "About", icon: "questionmark.circle", action: {
-                    showAbout = true
-                }, isDisabled: false)
-            }
-            .padding(.top, 8)
-            .padding(.horizontal, 16)
-            
-            ZStack {
-                PullToAddView(progress: pullRefreshProgress(), offset: yOffset, treshold: pullTreshold)
-                
-                GeometryReader { proxy in
-                    let width = proxy.size.width
-                    let height = proxy.size.height
+            } else {
+                HStack {
+                    Spacer()
                     
-                    ScrollView(showsIndicators: false) {
-                        VStack(spacing: 24) {
-                            Spacer()
-                            Button {
-                                
-                            } label: {
-                                VStack(spacing: 24) {
-                                    Image(systemName: isPulling() ? ImageSelectionIcon.iconPulling : ImageSelectionIcon.iconDefault)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 80)
-                                        .symbolRenderingMode(.palette)
-                                        .foregroundStyle(.accent, .secondary.opacity(0.5))
-                                        .contentTransition(.symbolEffect(.replace))
+                    MenuButton(title: "About", icon: "questionmark.circle", action: {
+                        showAbout = true
+                    }, isDisabled: false)
+                }
+                .padding(.top, 8)
+                .padding(.horizontal, 16)
+                
+                ZStack {
+                    PullToAddView(progress: pullRefreshProgress(), offset: yOffset, treshold: pullTreshold)
+                    
+                    GeometryReader { proxy in
+                        let width = proxy.size.width
+                        let height = proxy.size.height
+                        
+                        ScrollView(showsIndicators: false) {
+                            VStack(spacing: 24) {
+                                Spacer()
+                                Button {
                                     
-                                    VStack(spacing: 8) {
-                                        Text(isPulling() ? ImageSelectionText.textPulling : ImageSelectionText.textDefault)
-                                            .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                            .contentTransition(.identity)
+                                } label: {
+                                    VStack(spacing: 24) {
+                                        Image(systemName: isPulling() ? ImageSelectionIcon.iconPulling : ImageSelectionIcon.iconDefault)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 80)
+                                            .symbolRenderingMode(.palette)
+                                            .foregroundStyle(.accent, .secondary.opacity(0.5))
+                                            .contentTransition(.symbolEffect(.replace))
                                         
-                                        Text(ImageSelectionText.subtext)
-                                            .font(.system(size: 16, weight: .medium, design: .rounded))
-                                            .foregroundStyle(.secondary)
-                                            .multilineTextAlignment(.center)
-                                            .padding(.horizontal, 40)
+                                        VStack(spacing: 8) {
+                                            Text(isPulling() ? ImageSelectionText.textPulling : ImageSelectionText.textDefault)
+                                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                                .contentTransition(.identity)
+                                            
+                                            Text(ImageSelectionText.subtext)
+                                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                                .foregroundStyle(.secondary)
+                                                .multilineTextAlignment(.center)
+                                                .padding(.horizontal, 40)
+                                        }
                                     }
                                 }
+                                .buttonStyle(SpringButtonStyle(action: { showImagePicker = true }))
+                                Spacer()
                             }
-                            .buttonStyle(SpringButtonStyle(action: { showImagePicker = true }))
-                            Spacer()
+                            .padding(.horizontal, 16)
+                            .frame(width: width, height: height)
+                            .background( GeometryReader { proxy in
+                                self.detectScrollOffset(geometry: proxy)
+                            })
                         }
-                        .padding(.horizontal, 16)
-                        .frame(width: width, height: height)
-                        .background( GeometryReader { proxy in
-                            self.detectScrollOffset(geometry: proxy)
-                        })
+                        .ignoresSafeArea()
+                        .coordinateSpace(name: scrollViewNamespace)
                     }
-                    .ignoresSafeArea()
-                    .coordinateSpace(name: scrollViewNamespace)
                 }
             }
         }
@@ -111,7 +117,7 @@ struct ImageSelectionSceneView: View {
                 .presentationBackground(.clear)
         }
         .fullScreenCover(isPresented: $showImagePicker) {
-            ImagePickerView(image: $image)
+            ImagePickerView(image: $image, isLoading: $isLoading)
         }
         .onChange(of: image, { _, image in
             if let image {
