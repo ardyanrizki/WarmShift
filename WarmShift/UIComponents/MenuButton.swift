@@ -10,17 +10,16 @@ struct MenuButton: View {
     
     var body: some View {
         Button {
-            action()
+            
         } label: {
             Label(title, systemImage: icon)
                 .font(.system(size: 22, weight: .semibold, design: .rounded))
                 .labelStyle(.iconOnly)
                 .foregroundColor(.secondary.opacity(isDisabled ? 0.3 : 1))
-                .padding(.horizontal, 12)
-                .frame(minWidth: 40)
-                .frame(height: 40)
+                .frame(width: 40, height: 40)
         }
-        .buttonStyle(HapticButtonStyle())
+        .buttonStyle(SpringButtonStyle(action: action))
         .disabled(isDisabled)
     }
 }
+

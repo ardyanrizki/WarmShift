@@ -8,6 +8,8 @@ struct ImageSelectionSceneView: View {
     @State private var yOffset: CGFloat = 0
     @State private var showImagePicker = false
     
+    @State private var showAbout = false
+    
     @EnvironmentObject private var navigationManager: NavigationManager<AppRoute>
     
     private let pullTreshold: CGFloat = 80
@@ -38,53 +40,75 @@ struct ImageSelectionSceneView: View {
         yOffset >= pullTreshold
     }
     
-    private func maxHeight() -> CGFloat {
-        UIScreen.main.bounds.height
-    }
-    
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                
+                MenuButton(title: "About", icon: "questionmark.circle", action: {
+                    showAbout = true
+                }, isDisabled: false)
+            }
+            .padding(.top, 8)
+            .padding(.horizontal, 16)
+            
             ZStack {
                 PullToAddView(progress: pullRefreshProgress(), offset: yOffset, treshold: pullTreshold)
                 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 24) {
-                        Button {
-                            
-                        } label: {
-                            VStack(spacing: 24) {
-                                Image(systemName: isPulling() ? ImageSelectionIcon.iconPulling : ImageSelectionIcon.iconDefault)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 80)
-                                    .symbolRenderingMode(.palette)
-                                    .foregroundStyle(.accent, .secondary.opacity(0.5))
-                                    .contentTransition(.symbolEffect(.replace))
+                GeometryReader { proxy in
+                    let width = proxy.size.width
+                    let height = proxy.size.height
+                    
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 24) {
+                            Spacer()
+                            Button {
                                 
-                                VStack(spacing: 8) {
-                                    Text(isPulling() ? ImageSelectionText.textPulling : ImageSelectionText.textDefault)
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                        .contentTransition(.identity)
+                            } label: {
+                                VStack(spacing: 24) {
+                                    Image(systemName: isPulling() ? ImageSelectionIcon.iconPulling : ImageSelectionIcon.iconDefault)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 80)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(.accent, .secondary.opacity(0.5))
+                                        .contentTransition(.symbolEffect(.replace))
                                     
-                                    Text(ImageSelectionText.subtext)
-                                        .font(.system(size: 16, weight: .medium, design: .rounded))
-                                        .foregroundStyle(.secondary)
-                                        .multilineTextAlignment(.center)
-                                        .padding(.horizontal, 40)
+                                    VStack(spacing: 8) {
+                                        Text(isPulling() ? ImageSelectionText.textPulling : ImageSelectionText.textDefault)
+                                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                            .contentTransition(.identity)
+                                        
+                                        Text(ImageSelectionText.subtext)
+                                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                                            .foregroundStyle(.secondary)
+                                            .multilineTextAlignment(.center)
+                                            .padding(.horizontal, 40)
+                                    }
                                 }
                             }
+                            .buttonStyle(SpringButtonStyle(action: { showImagePicker = true }))
+                            Spacer()
                         }
-                        .buttonStyle(SpringButtonStyle(action: { showImagePicker = true }))
+                        .padding(.horizontal, 16)
+                        .frame(width: width, height: height)
+                        .background( GeometryReader { proxy in
+                            self.detectScrollOffset(geometry: proxy)
+                        })
                     }
-                    .frame(width: UIScreen.main.bounds.width, height: maxHeight())
-                    .padding(.horizontal, 16)
-                    .background( GeometryReader { proxy in
-                        self.detectScrollOffset(geometry: proxy)
-                    })
+                    .ignoresSafeArea()
+                    .coordinateSpace(name: scrollViewNamespace)
                 }
-                .ignoresSafeArea()
-                .coordinateSpace(name: scrollViewNamespace)
             }
+        }
+        .overlay {
+            Color.primary.opacity(showAbout ? 0.15 : 0)
+                .ignoresSafeArea()
+                .animation(.easeIn(duration: 0.1), value: showAbout)
+        }
+        .fullScreenCover(isPresented: $showAbout) {
+            AboutModalView(isPresented: $showAbout)
+                .presentationBackground(.clear)
         }
         .fullScreenCover(isPresented: $showImagePicker) {
             ImagePickerView(image: $image)

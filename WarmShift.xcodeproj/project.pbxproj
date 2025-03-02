@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3835E9FC2D744899003CEC30 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 3835E9FB2D744899003CEC30 /* NavigationTransitions */; };
 		3835E9FE2D7454D0003CEC30 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */; };
+		3835EA002D74B3CE003CEC30 /* AboutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3835E9FF2D74B3CD003CEC30 /* AboutModalView.swift */; };
 		388933582D716A3D00240441 /* WarmShiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933572D716A3D00240441 /* WarmShiftApp.swift */; };
 		3889335A2D716A3D00240441 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933592D716A3D00240441 /* ContentView.swift */; };
 		3889335C2D716A3F00240441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3889335B2D716A3F00240441 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		3835E9FF2D74B3CD003CEC30 /* AboutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModalView.swift; sourceTree = "<group>"; };
 		388933542D716A3D00240441 /* WarmShift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarmShift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388933572D716A3D00240441 /* WarmShiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftApp.swift; sourceTree = "<group>"; };
 		388933592D716A3D00240441 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,13 +141,13 @@
 				3889339A2D71A05000240441 /* opencv2.xcframework */,
 				388933572D716A3D00240441 /* WarmShiftApp.swift */,
 				388933592D716A3D00240441 /* ContentView.swift */,
+				3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */,
 				3889335B2D716A3F00240441 /* Assets.xcassets */,
 				3889335D2D716A3F00240441 /* Preview Content */,
 				3889339C2D71A06900240441 /* OpenCVWrapper.h */,
 				3889339E2D71A08100240441 /* OpenCVWrapper.mm */,
 				3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */,
 				388933A02D71A0BA00240441 /* PrefixHeader.pch */,
-				3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */,
 			);
 			path = WarmShift;
 			sourceTree = "<group>";
@@ -228,6 +230,7 @@
 			children = (
 				388933C12D730EEE00240441 /* PullToAddView.swift */,
 				388933AF2D72E28F00240441 /* PullProgressView.swift */,
+				3835E9FF2D74B3CD003CEC30 /* AboutModalView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				3835E9FE2D7454D0003CEC30 /* NavigationManager.swift in Sources */,
 				388933AE2D72E24700240441 /* ShareSheetView.swift in Sources */,
 				388933B02D72E28F00240441 /* PullProgressView.swift in Sources */,
+				3835EA002D74B3CE003CEC30 /* AboutModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

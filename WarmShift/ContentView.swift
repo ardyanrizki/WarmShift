@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
         }
         .environmentObject(navigationManager)
-        .navigationTransition(.slide(axis: .vertical))
+        .navigationTransition(.slideTop())
     }
 }
 

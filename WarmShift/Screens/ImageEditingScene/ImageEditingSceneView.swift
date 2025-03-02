@@ -40,16 +40,18 @@ struct ImageEditingSceneView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .center) {
                 MenuButton(title: ImageEditingText.cancel, icon: ImageEditingIcon.cancel, action: cancel, isDisabled: false)
                 Spacer()
-                MenuButton(title: ImageEditingText.save, icon: ImageEditingIcon.save, action: saveImageToPhotos, isDisabled: isFurtherActionDisabled)
-                MenuButton(title: ImageEditingText.share, icon: ImageEditingIcon.share, action: {
-                    showShareSheet = true
-                }, isDisabled: isFurtherActionDisabled)
+                HStack(alignment: .center, spacing: 16) {
+                    MenuButton(title: ImageEditingText.save, icon: ImageEditingIcon.save, action: saveImageToPhotos, isDisabled: isFurtherActionDisabled)
+                    MenuButton(title: ImageEditingText.share, icon: ImageEditingIcon.share, action: {
+                        showShareSheet = true
+                    }, isDisabled: isFurtherActionDisabled)
+                }
             }
+            .padding(.top, 8)
             .padding(.horizontal, 16)
-            .padding(.vertical, 8)
             
             Spacer()
             
@@ -86,7 +88,6 @@ struct ImageEditingSceneView: View {
     }
     
     private func cancel() {
-        processedImage = nil
         navigationManager.pop()
     }
     
