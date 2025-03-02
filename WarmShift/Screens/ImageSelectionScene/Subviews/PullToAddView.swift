@@ -24,6 +24,7 @@ extension ImageSelectionSceneView {
                 }
                 .frame(width: 50, height: 50)
             }
+            .opacity(progress > 0 ? 1 : 0)
             .scaleEffect(min(offset / 100, 0.8))
             .offset(y: -400 + offset)
             .padding(.bottom, 0 + offset / 2)
