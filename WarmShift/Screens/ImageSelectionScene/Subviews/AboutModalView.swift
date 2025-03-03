@@ -18,12 +18,14 @@ struct AboutModalView: View {
                 VStack(spacing: 8) {
                     HStack {
                         Spacer()
-                        Button(action: { isPresented = false }) {
+                        Button(action: {  }) {
                             Image(systemName: "xmark.circle.fill")
                                 .font(.title)
                                 .foregroundColor(.secondary)
                         }
-                        .buttonStyle(HapticButtonStyle(isCancellation: true))
+                        .buttonStyle(SpringButtonStyle(action: {
+                            isPresented = false
+                        }, isCancellation: true))
                     }
                     
                     Image(systemName: "sun.horizon")
@@ -98,7 +100,7 @@ struct AboutModalView: View {
                     .frame(maxHeight: 300)
                     
                     // "Got It" Button
-                    Button(action: { isPresented = false }) {
+                    Button(action: {  }) {
                         Text("Got It")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
@@ -107,7 +109,9 @@ struct AboutModalView: View {
                             .foregroundColor(.white)
                             .cornerRadius(16)
                     }
-                    .buttonStyle(HapticButtonStyle(isCancellation: true))
+                    .buttonStyle(SpringButtonStyle(action: {
+                        isPresented = false
+                    }, isCancellation: true))
                     .padding([.horizontal, .bottom], 20)
                 }
             }

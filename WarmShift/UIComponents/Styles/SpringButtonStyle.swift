@@ -4,13 +4,19 @@ import SwiftUI
 
 struct SpringButtonStyle: ButtonStyle {
     var action: () -> Void
+    let isCancellation: Bool
+    
+    init(action: @escaping () -> Void, isCancellation: Bool = false) {
+        self.action = action
+        self.isCancellation = isCancellation
+    }
     
     @State private var isInvalidateAction: Bool = false
     @State private var isPressing: Bool = false
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(isPressing ? 0.9 : 1.0)
+            .scaleEffect(isPressing ? 0.95 : 1.0)
             .animation(.bouncy, value: isPressing)
             .simultaneousGesture(
                 DragGesture(minimumDistance: 10)
@@ -41,7 +47,7 @@ struct SpringButtonStyle: ButtonStyle {
                     }
                 }
             }
-            .sensoryFeedback(.impact(flexibility: .solid), trigger: configuration.isPressed) { oldVal, newVal in
+            .sensoryFeedback(isCancellation ? .impact(flexibility: .soft) : .impact(flexibility: .solid), trigger: configuration.isPressed) { oldVal, newVal in
                 oldVal && !newVal && !isInvalidateAction
             }
     }
