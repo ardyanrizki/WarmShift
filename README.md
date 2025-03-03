@@ -33,7 +33,7 @@ WarmShift is an iOS app that allows users to adjust the color temperature of JPE
 - [SwiftUI Navigation Transitions](https://github.com/davdroman/swiftui-navigation-transitions) to enhance navigation transitions for a better user experience
 
 ## Usage
-![App screens thumbnail](https://gist.github.com/user-attachments/assets/ba1cf7df-4be9-4b49-8257-6f12e5eabe18)
+![App screens thumbnail](https://github.com/user-attachments/assets/38b89fd2-f5e1-4f4a-bc54-ef98d6a2fa0a)
 1. Load an image from your photo library.
 2. Adjust the color temperature using the slider.
 3. Save the modified image to your gallery.
