@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3835E9FC2D744899003CEC30 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 3835E9FB2D744899003CEC30 /* NavigationTransitions */; };
+		3835E9FE2D7454D0003CEC30 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */; };
+		3835EA002D74B3CE003CEC30 /* AboutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3835E9FF2D74B3CD003CEC30 /* AboutModalView.swift */; };
 		388933582D716A3D00240441 /* WarmShiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933572D716A3D00240441 /* WarmShiftApp.swift */; };
 		3889335A2D716A3D00240441 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933592D716A3D00240441 /* ContentView.swift */; };
 		3889335C2D716A3F00240441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3889335B2D716A3F00240441 /* Assets.xcassets */; };
@@ -14,6 +17,21 @@
 		388933692D716A4000240441 /* WarmShiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933682D716A4000240441 /* WarmShiftTests.swift */; };
 		388933732D716A4000240441 /* WarmShiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933722D716A4000240441 /* WarmShiftUITests.swift */; };
 		388933752D716A4000240441 /* WarmShiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933742D716A4000240441 /* WarmShiftUITestsLaunchTests.swift */; };
+		3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3889339A2D71A05000240441 /* opencv2.xcframework */; };
+		3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3889339E2D71A08100240441 /* OpenCVWrapper.mm */; };
+		388933A22D71ADAC00240441 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933A12D71ADAC00240441 /* ImagePickerView.swift */; };
+		388933A62D71B75000240441 /* ResizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933A52D71B75000240441 /* ResizableImageView.swift */; };
+		388933A92D71B81800240441 /* CompactSlider in Frameworks */ = {isa = PBXBuildFile; productRef = 388933A82D71B81800240441 /* CompactSlider */; };
+		388933AB2D71C4E000240441 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933AA2D71C4E000240441 /* ProgressView.swift */; };
+		388933AE2D72E24700240441 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933AD2D72E24700240441 /* ShareSheetView.swift */; };
+		388933B02D72E28F00240441 /* PullProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933AF2D72E28F00240441 /* PullProgressView.swift */; };
+		388933B52D730DBA00240441 /* SpringButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933B42D730DBA00240441 /* SpringButtonStyle.swift */; };
+		388933B72D730DD700240441 /* HapticButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933B62D730DD700240441 /* HapticButtonStyle.swift */; };
+		388933BD2D730E5700240441 /* ImageSelectionSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933BC2D730E5700240441 /* ImageSelectionSceneView.swift */; };
+		388933BF2D730E9100240441 /* ImageEditingSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933BE2D730E9100240441 /* ImageEditingSceneView.swift */; };
+		388933C22D730EEE00240441 /* PullToAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933C12D730EEE00240441 /* PullToAddView.swift */; };
+		388933C52D730F1300240441 /* TemperatureControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933C42D730F1300240441 /* TemperatureControlView.swift */; };
+		388933C72D730F6900240441 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388933C62D730F6900240441 /* MenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		3835E9FF2D74B3CD003CEC30 /* AboutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModalView.swift; sourceTree = "<group>"; };
 		388933542D716A3D00240441 /* WarmShift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarmShift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		388933572D716A3D00240441 /* WarmShiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftApp.swift; sourceTree = "<group>"; };
 		388933592D716A3D00240441 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +64,24 @@
 		3889336E2D716A4000240441 /* WarmShiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WarmShiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		388933722D716A4000240441 /* WarmShiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftUITests.swift; sourceTree = "<group>"; };
 		388933742D716A4000240441 /* WarmShiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmShiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3889339A2D71A05000240441 /* opencv2.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = opencv2.xcframework; path = "../../../Downloads/fastopencv-ios-main/opencv2.xcframework"; sourceTree = "<group>"; };
+		3889339C2D71A06900240441 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WarmShift-Bridging-Header.h"; sourceTree = "<group>"; };
+		3889339E2D71A08100240441 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		388933A02D71A0BA00240441 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		388933A12D71ADAC00240441 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		388933A52D71B75000240441 /* ResizableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableImageView.swift; sourceTree = "<group>"; };
+		388933AA2D71C4E000240441 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		388933AC2D71C83B00240441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		388933AD2D72E24700240441 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
+		388933AF2D72E28F00240441 /* PullProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullProgressView.swift; sourceTree = "<group>"; };
+		388933B42D730DBA00240441 /* SpringButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringButtonStyle.swift; sourceTree = "<group>"; };
+		388933B62D730DD700240441 /* HapticButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticButtonStyle.swift; sourceTree = "<group>"; };
+		388933BC2D730E5700240441 /* ImageSelectionSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionSceneView.swift; sourceTree = "<group>"; };
+		388933BE2D730E9100240441 /* ImageEditingSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEditingSceneView.swift; sourceTree = "<group>"; };
+		388933C12D730EEE00240441 /* PullToAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToAddView.swift; sourceTree = "<group>"; };
+		388933C42D730F1300240441 /* TemperatureControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControlView.swift; sourceTree = "<group>"; };
+		388933C62D730F6900240441 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +89,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3889339B2D71A05000240441 /* opencv2.xcframework in Frameworks */,
+				3835E9FC2D744899003CEC30 /* NavigationTransitions in Frameworks */,
+				388933A92D71B81800240441 /* CompactSlider in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +135,19 @@
 		388933562D716A3D00240441 /* WarmShift */ = {
 			isa = PBXGroup;
 			children = (
+				388933B82D730E0400240441 /* Screens */,
+				388933B12D730D9000240441 /* UIComponents */,
+				388933AC2D71C83B00240441 /* Info.plist */,
+				3889339A2D71A05000240441 /* opencv2.xcframework */,
 				388933572D716A3D00240441 /* WarmShiftApp.swift */,
 				388933592D716A3D00240441 /* ContentView.swift */,
+				3835E9FD2D7454D0003CEC30 /* NavigationManager.swift */,
 				3889335B2D716A3F00240441 /* Assets.xcassets */,
 				3889335D2D716A3F00240441 /* Preview Content */,
+				3889339C2D71A06900240441 /* OpenCVWrapper.h */,
+				3889339E2D71A08100240441 /* OpenCVWrapper.mm */,
+				3889339D2D71A08100240441 /* WarmShift-Bridging-Header.h */,
+				388933A02D71A0BA00240441 /* PrefixHeader.pch */,
 			);
 			path = WarmShift;
 			sourceTree = "<group>";
@@ -127,6 +177,73 @@
 			path = WarmShiftUITests;
 			sourceTree = "<group>";
 		};
+		388933B12D730D9000240441 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				388933B22D730DA100240441 /* Styles */,
+				388933A52D71B75000240441 /* ResizableImageView.swift */,
+				388933A12D71ADAC00240441 /* ImagePickerView.swift */,
+				388933AD2D72E24700240441 /* ShareSheetView.swift */,
+				388933C62D730F6900240441 /* MenuButton.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		388933B22D730DA100240441 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				388933B42D730DBA00240441 /* SpringButtonStyle.swift */,
+				388933B62D730DD700240441 /* HapticButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		388933B82D730E0400240441 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				388933BB2D730E3400240441 /* ImageSelectionScene */,
+				388933B92D730E1800240441 /* ImageEditingScene */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		388933B92D730E1800240441 /* ImageEditingScene */ = {
+			isa = PBXGroup;
+			children = (
+				388933C32D730F0800240441 /* Subviews */,
+				388933BE2D730E9100240441 /* ImageEditingSceneView.swift */,
+			);
+			path = ImageEditingScene;
+			sourceTree = "<group>";
+		};
+		388933BB2D730E3400240441 /* ImageSelectionScene */ = {
+			isa = PBXGroup;
+			children = (
+				388933C02D730ECE00240441 /* Subviews */,
+				388933BC2D730E5700240441 /* ImageSelectionSceneView.swift */,
+			);
+			path = ImageSelectionScene;
+			sourceTree = "<group>";
+		};
+		388933C02D730ECE00240441 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				388933C12D730EEE00240441 /* PullToAddView.swift */,
+				388933AF2D72E28F00240441 /* PullProgressView.swift */,
+				3835E9FF2D74B3CD003CEC30 /* AboutModalView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		388933C32D730F0800240441 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				388933AA2D71C4E000240441 /* ProgressView.swift */,
+				388933C42D730F1300240441 /* TemperatureControlView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +260,10 @@
 			dependencies = (
 			);
 			name = WarmShift;
+			packageProductDependencies = (
+				388933A82D71B81800240441 /* CompactSlider */,
+				3835E9FB2D744899003CEC30 /* NavigationTransitions */,
+			);
 			productName = WarmShift;
 			productReference = 388933542D716A3D00240441 /* WarmShift.app */;
 			productType = "com.apple.product-type.application";
@@ -195,6 +316,7 @@
 				TargetAttributes = {
 					388933532D716A3D00240441 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					388933632D716A4000240441 = {
 						CreatedOnToolsVersion = 15.4;
@@ -215,6 +337,10 @@
 				Base,
 			);
 			mainGroup = 3889334B2D716A3D00240441;
+			packageReferences = (
+				388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */,
+				3835E9FA2D744899003CEC30 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */,
+			);
 			productRefGroup = 388933552D716A3D00240441 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +383,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388933A22D71ADAC00240441 /* ImagePickerView.swift in Sources */,
+				388933BF2D730E9100240441 /* ImageEditingSceneView.swift in Sources */,
+				388933C72D730F6900240441 /* MenuButton.swift in Sources */,
 				3889335A2D716A3D00240441 /* ContentView.swift in Sources */,
 				388933582D716A3D00240441 /* WarmShiftApp.swift in Sources */,
+				388933A62D71B75000240441 /* ResizableImageView.swift in Sources */,
+				388933C52D730F1300240441 /* TemperatureControlView.swift in Sources */,
+				388933B52D730DBA00240441 /* SpringButtonStyle.swift in Sources */,
+				388933AB2D71C4E000240441 /* ProgressView.swift in Sources */,
+				388933BD2D730E5700240441 /* ImageSelectionSceneView.swift in Sources */,
+				388933C22D730EEE00240441 /* PullToAddView.swift in Sources */,
+				388933B72D730DD700240441 /* HapticButtonStyle.swift in Sources */,
+				3889339F2D71A08100240441 /* OpenCVWrapper.mm in Sources */,
+				3835E9FE2D7454D0003CEC30 /* NavigationManager.swift in Sources */,
+				388933AE2D72E24700240441 /* ShareSheetView.swift in Sources */,
+				388933B02D72E28F00240441 /* PullProgressView.swift in Sources */,
+				3835EA002D74B3CE003CEC30 /* AboutModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,12 +560,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WarmShift/Preview Content\"";
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				ENABLE_PREVIEWS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WarmShift/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WarmShift/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to save edited images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -438,6 +584,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ardyan.info.WarmShift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WarmShift/WarmShift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,12 +596,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WarmShift/Preview Content\"";
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				ENABLE_PREVIEWS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WarmShift/PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WarmShift/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to save edited images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,6 +620,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ardyan.info.WarmShift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WarmShift/WarmShift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -588,6 +742,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3835E9FA2D744899003CEC30 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/swiftui-navigation-transitions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
+			};
+		};
+		388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/buh/CompactSlider.git";
+			requirement = {
+				branch = xcode15;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3835E9FB2D744899003CEC30 /* NavigationTransitions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3835E9FA2D744899003CEC30 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */;
+			productName = NavigationTransitions;
+		};
+		388933A82D71B81800240441 /* CompactSlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 388933A72D71B81800240441 /* XCRemoteSwiftPackageReference "CompactSlider" */;
+			productName = CompactSlider;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3889334C2D716A3D00240441 /* Project object */;
 }
